@@ -5,7 +5,7 @@ COMO ATUALIZAR NO GITHUB
 2. Abra o repositório draphoscomercial e clique em Code.
 3. Use Add file > Upload files.
 4. Envie o CONTEÚDO da pasta draphos-site para a raiz do repositório:
-   index.html, style.css, app.js, .nojekyll e a pasta assets completa.
+   index.html, TODOS os arquivos .css e .js, .nojekyll e a pasta assets completa.
 5. Confirme em Commit changes e aguarde a publicação do GitHub Pages.
 O index.html deve ficar na raiz, sem uma pasta draphos-site acima dele.
 
