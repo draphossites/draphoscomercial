@@ -17,3 +17,11 @@ function syncPlans(){plansPrevious.disabled=plansTrack.scrollLeft<=2;plansNext.d
 function movePlans(direction){const card=plansTrack.querySelector('.plan');const gap=parseFloat(getComputedStyle(plansTrack).columnGap)||0;plansTrack.scrollBy({left:direction*(card.getBoundingClientRect().width+gap),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
 plansPrevious.addEventListener('click',()=>movePlans(-1));plansNext.addEventListener('click',()=>movePlans(1));plansTrack.addEventListener('scroll',syncPlans,{passive:true});window.addEventListener('resize',syncPlans);syncPlans();
 
+
+const faqTrack=document.querySelector('#faq-track');
+const faqPrevious=document.querySelector('#faq-prev');
+const faqNext=document.querySelector('#faq-next');
+const faqProgress=document.querySelector('#faq-progress');
+function syncFaq(){const card=faqTrack.querySelector('.faq-card');const gap=parseFloat(getComputedStyle(faqTrack).columnGap)||0;const step=card.getBoundingClientRect().width+gap;const count=faqTrack.children.length;const first=Math.min(count,Math.max(1,Math.round(faqTrack.scrollLeft/step)+1));const visible=Math.max(1,Math.floor((faqTrack.clientWidth+gap)/step));const last=Math.min(count,first+visible-1);faqPrevious.disabled=faqTrack.scrollLeft<=2;faqNext.disabled=faqTrack.scrollLeft>=faqTrack.scrollWidth-faqTrack.clientWidth-3;faqProgress.textContent=first===last?`Pergunta ${first} de ${count}`:`Perguntas ${first} a ${last} de ${count}`;}
+function moveFaq(direction){const card=faqTrack.querySelector('.faq-card');const gap=parseFloat(getComputedStyle(faqTrack).columnGap)||0;faqTrack.scrollBy({left:direction*(card.getBoundingClientRect().width+gap),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
+faqPrevious.addEventListener('click',()=>moveFaq(-1));faqNext.addEventListener('click',()=>moveFaq(1));faqTrack.addEventListener('scroll',syncFaq,{passive:true});window.addEventListener('resize',syncFaq);syncFaq();
