@@ -2,7 +2,7 @@ const dialog=document.querySelector('#project-dialog');
 document.querySelectorAll('[data-image]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();document.querySelector('#dialog-title').textContent=link.dataset.title;const img=document.querySelector('#dialog-image');img.src=link.dataset.image;img.alt='Apresentação do projeto '+link.dataset.title;dialog.showModal()}));
 document.querySelector('.close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=>{if(event.target===dialog){const rect=dialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)dialog.close()}});
-document.querySelectorAll('.whatsapp').forEach(link=>{const message=link.dataset.plan?`Olá, Junior! Tenho interesse no plano ${link.dataset.plan} da Draphos. Podemos conversar?`:'Olá, Junior! Quero conhecer o Plano de Sucesso Digital da Draphos para minha loja.';link.href='https://wa.me/5551999862335?text='+encodeURIComponent(message);link.target='_blank';link.rel='noopener noreferrer'});
+document.querySelectorAll('.whatsapp').forEach(link=>{const message=link.dataset.diagnostic?'Olá, Junior! Quero um diagnóstico gratuito da presença digital da minha loja. Posso enviar o nome, a cidade e os links dos meus canais?':link.dataset.plan?`Olá, Junior! Tenho interesse no plano ${link.dataset.plan} da Draphos. Podemos conversar?`:'Olá, Junior! Quero conhecer o Plano de Sucesso Digital da Draphos para minha loja.';link.href='https://wa.me/5551999862335?text='+encodeURIComponent(message);link.target='_blank';link.rel='noopener noreferrer'});
 
 const track=document.querySelector('#projects-track');
 const previous=document.querySelector('#projects-prev');
