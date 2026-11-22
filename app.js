@@ -3,3 +3,10 @@ document.querySelectorAll('[data-image]').forEach(link=>link.addEventListener('c
 document.querySelector('.close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=>{if(event.target===dialog){const rect=dialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)dialog.close()}});
 document.querySelectorAll('.whatsapp').forEach(link=>{const message=link.dataset.plan?`Olá, Junior! Tenho interesse no plano ${link.dataset.plan} da Draphos. Podemos conversar?`:'Olá, Junior! Quero conhecer o Plano de Sucesso Digital da Draphos para minha loja.';link.href='https://wa.me/5551999862335?text='+encodeURIComponent(message);link.target='_blank';link.rel='noopener noreferrer'});
+
+const track=document.querySelector('#projects-track');
+const previous=document.querySelector('#projects-prev');
+const next=document.querySelector('#projects-next');
+function syncCarousel(){previous.disabled=track.scrollLeft<=2;next.disabled=track.scrollLeft>=track.scrollWidth-track.clientWidth-3;}
+function moveProjects(direction){const card=track.querySelector('.real-work');const gap=parseFloat(getComputedStyle(track).columnGap)||0;track.scrollBy({left:direction*(card.getBoundingClientRect().width+gap),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
+previous.addEventListener('click',()=>moveProjects(-1));next.addEventListener('click',()=>moveProjects(1));track.addEventListener('scroll',syncCarousel,{passive:true});window.addEventListener('resize',syncCarousel);syncCarousel();
