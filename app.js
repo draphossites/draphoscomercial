@@ -10,3 +10,10 @@ const next=document.querySelector('#projects-next');
 function syncCarousel(){previous.disabled=track.scrollLeft<=2;next.disabled=track.scrollLeft>=track.scrollWidth-track.clientWidth-3;}
 function moveProjects(direction){const card=track.querySelector('.real-work');const gap=parseFloat(getComputedStyle(track).columnGap)||0;track.scrollBy({left:direction*(card.getBoundingClientRect().width+gap),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
 previous.addEventListener('click',()=>moveProjects(-1));next.addEventListener('click',()=>moveProjects(1));track.addEventListener('scroll',syncCarousel,{passive:true});window.addEventListener('resize',syncCarousel);syncCarousel();
+const plansTrack=document.querySelector('#plans-track');
+const plansPrevious=document.querySelector('#plans-prev');
+const plansNext=document.querySelector('#plans-next');
+function syncPlans(){plansPrevious.disabled=plansTrack.scrollLeft<=2;plansNext.disabled=plansTrack.scrollLeft>=plansTrack.scrollWidth-plansTrack.clientWidth-3;}
+function movePlans(direction){const card=plansTrack.querySelector('.plan');const gap=parseFloat(getComputedStyle(plansTrack).columnGap)||0;plansTrack.scrollBy({left:direction*(card.getBoundingClientRect().width+gap),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
+plansPrevious.addEventListener('click',()=>movePlans(-1));plansNext.addEventListener('click',()=>movePlans(1));plansTrack.addEventListener('scroll',syncPlans,{passive:true});window.addEventListener('resize',syncPlans);syncPlans();
+
